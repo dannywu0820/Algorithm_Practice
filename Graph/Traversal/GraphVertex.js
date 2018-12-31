@@ -7,6 +7,9 @@ let GraphVertex = function(value){
 	this.color = WHITE;
 	this.predecessor = null;
 	this.distance = this.INFINITY;
+
+	this.discover_time = 0;
+	this.finish_time = 0;
 }
 
 GraphVertex.prototype.INFINITY = Number.MAX_SAFE_INTEGER;
@@ -37,6 +40,19 @@ GraphVertex.prototype.getDistance = function(){
 
 GraphVertex.prototype.setDistance = function(new_distance){
 	this.distance = new_distance;
+}
+
+GraphVertex.prototype.getTime = function(){
+	return ("Discover:" + this.discover_time + " Finish:" + this.finish_time);
+}
+
+GraphVertex.prototype.setTime = function(type='discover', new_time){
+	if(type == 'discover'){
+		this.discover_time = new_time;
+	}
+	else{
+		this.finish_time = new_time;	
+	}
 }
 
 module.exports = GraphVertex;
